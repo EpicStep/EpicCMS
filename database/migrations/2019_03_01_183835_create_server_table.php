@@ -18,6 +18,8 @@ class CreateServerTable extends Migration
             $table->string('name');
             $table->string('ip')->nullable();
             $table->string('rcon')->nullable();
+            $table->integer('shop')->default('0');
+            $table->timestamps();
             //$table->time()->nullable();
         });
 
@@ -31,11 +33,19 @@ class CreateServerTable extends Migration
             //$table->time()->nullable();
         });
 
-        Schema::create('donate', function (Blueprint $table) {
+        Schema::create('donates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tech_name');
             $table->string('name');
             $table->integer('server_id');
+            $table->integer('price');
+        });
+
+        Schema::create('shop_items', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('server_id');
+            $table->string('name');
+            $table->string('image');
             $table->integer('price');
         });
     }
@@ -47,8 +57,9 @@ class CreateServerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banlist');
+        Schema::dropIfExists('banlists');
         Schema::dropIfExists('servers');
-        Schema::dropIfExists('donate');
+        Schema::dropIfExists('donates');
+        Schema::dropIfExists('shop_items');
     }
 }

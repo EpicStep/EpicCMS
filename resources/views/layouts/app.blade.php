@@ -33,7 +33,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <nav class="menu">
+                            <li>Форум</li>
+                            <li>Как начать</li>
+                            <li>FAQ</li>
+                            <li>Правила</li>
+                        </nav>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
