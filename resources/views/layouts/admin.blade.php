@@ -54,45 +54,49 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin') }}">
-                            <span data-feather="home"></span>
+                        <a class="nav-link" id="home" href="{{ route('admin') }}">
                             <i class="fas fa-home"></i> Главная панель <span class="sr-only"></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin/news') }}">
-                            <span data-feather="file"></span>
+                        <a class="nav-link" id="news" href="{{ route('admin/news') }}">
                             <i class="fas fa-newspaper"></i> Новости
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin/servers') }}">
-                            <span data-feather="shopping-cart"></span>
+                        <a class="nav-link" id="servers" href="{{ route('admin/servers') }}">
                             <i class="fas fa-server"></i> Сервера
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="users"></span>
+                        <a class="nav-link" id="donate" href="#">
                             <i class="fas fa-donate"></i> Донат
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="bar-chart-2"></span>
+                        <a class="nav-link" id="shop" href="#">
                             <i class="fas fa-shopping-cart"></i> Магазин блоков
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('admin/page')}}">
-                            <span data-feather="layers"></span>
+                        <a class="nav-link" id="pages" href="{{route('admin/page')}}">
                             <i class="fas fa-file"></i> Статистические страницы
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="layers"></span>
+                        <a class="nav-link" id="mreq" href="#">
                             <i class="fas fa-user-tie"></i> Заявки на модератора
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="settings" href="{{ route('admin/settings') }}">
+                            <i class="fas fa-cog"></i> Настройки
+                        </a>
+                    </li>
+                    <br>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <p>Вы авторизованы как - {{ Auth::user()->name }}</p>
                         </a>
                     </li>
                 </ul>
@@ -102,7 +106,5 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </body>
 </html>

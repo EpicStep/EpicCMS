@@ -44,3 +44,9 @@ Route::get('/admin/page/{tech_name}', 'AdminController@pageEditor')->name('admin
 Route::post('/admin/page/delete', 'AdminController@deletePage')->name('admin/page/delete');
 Route::post('/admin/page/create', 'AdminController@createPage')->name('admin/page/create');
 Route::post('/admin/page/edit', 'AdminController@pageEdit')->name('admin/page/edit');
+Route::get('/admin/settings', 'AdminController@settings')->name('admin/settings');
+Route::post('/admin/settings/update', 'AdminController@settingsUpdate')->name('admin/settings/update');
+
+// FORUM
+Route::get('/forum', 'ForumController@forumIndex')->name('forum');
+Route::get('/forum/category/{section_id}', 'ForumController@showSection')->name('forum/category');

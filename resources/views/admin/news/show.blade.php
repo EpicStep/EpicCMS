@@ -36,4 +36,7 @@
             <a href="{{route('admin/news')}}" class="btn btn-danger">Отмена</a>
         </form>
     </main>
+    <script>
+        document.getElementById('news').setAttribute('class', 'nav-link active');
+    </script>
 @endsection

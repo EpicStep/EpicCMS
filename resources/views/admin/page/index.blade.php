@@ -68,4 +68,7 @@
             <button type="submit" class="btn btn-primary">Создать</button>
         </form>
     </main>
+    <script>
+        document.getElementById('pages').setAttribute('class', 'nav-link active');
+    </script>
 @endsection

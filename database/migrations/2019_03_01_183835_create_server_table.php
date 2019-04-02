@@ -39,6 +39,7 @@ class CreateServerTable extends Migration
             $table->string('name');
             $table->integer('server_id');
             $table->integer('price');
+            $table->string('cmd');
         });
 
         Schema::create('shop_items', function (Blueprint $table) {

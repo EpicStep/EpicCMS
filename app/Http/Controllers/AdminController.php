@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Page;
+use App\Sections;
+use App\Settings;
 use Illuminate\Http\Request;
 use App\Server;
 use App\News;
@@ -16,6 +19,7 @@ class AdminController extends Controller
     }
 
     public function index(){
+        $monday = User::all()->where('created_at');
         return view('admin.index');
     }
 
@@ -140,5 +144,33 @@ class AdminController extends Controller
         ));
 
         return redirect('admin/page');
+    }
+
+    public function settings(){
+        if (!Settings::all()->first()){ // Проверка, есть ли таблица с настройками.
+            Settings::create([
+                'UnitPay_PublicKey' => 'demo',
+                'UnitPay_SecretKey' => 'demo',
+                'forum' => '0'
+            ]);
+        }
+
+        $settings = Settings::all()->first();
+        return view('admin.settings', compact('settings'));
+    }
+
+    public function settingsUpdate(){
+        $unitpaypk = request('upaypk');
+        $unitpaysk = request('upaysk');
+        $forum = request('forum');
+
+        $setings = Settings::all()->first();
+
+        $setings->update(array(
+            'UnitPay_PublicKey' => $unitpaypk,
+            'UnitPay_SecretKey' => $unitpaysk,
+            'forum' => $forum
+        ));
+        return redirect('admin/settings');
     }
 }

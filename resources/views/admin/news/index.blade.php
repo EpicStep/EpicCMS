@@ -13,23 +13,23 @@
             @csrf
             <div class="form-group">
                 <label for="exampleInputTitle">Заголовок новости</label>
-                <input type="text" name="title" class="title form-control" id="title" aria-describedby="titleHelp" placeholder="Введите заголовок">
+                <input type="text" name="title" class="title form-control" id="title" aria-describedby="titleHelp" placeholder="Введите заголовок" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputMiniBody">Превью</label>
-                <input type="text" name="mini_body" class="mini_body form-control" id="mini_body" placeholder="Введите превью-текст">
+                <input type="text" name="mini_body" class="mini_body form-control" id="mini_body" placeholder="Введите превью-текст" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputImage">Ссылка на прил. фото</label>
                 <input type="text" name="image" class="image form-control" id="image" placeholder="Введите ссылку на Фото.">
             </div>
             <div class="form-group">
-                <label for="exampleInputBody">Текст новости</label>
-                <input type="text" name="body" class="body form-control" id="body" placeholder="Введите текст новости">
+                <label for="exampleInputMiniBody">Текст новости</label>
+                <textarea class="body form-control" id="body" name="body" rows="5" required></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleInputBody">Ссылка на новость (/news/[Имя])</label>
-                <input type="text" name="tech_name" class="tech_name form-control" id="tech_name" placeholder="Введите ссылку на новость">
+                <input type="text" name="tech_name" class="tech_name form-control" id="tech_name" placeholder="Введите ссылку на новость" required>
             </div>
             <input type="text" style="display: none" name="write_by" class="write_by form-control" value="{{ Auth::user()->name }}">
             <button type="submit" class="btn btn-primary">Создать</button>
@@ -68,4 +68,7 @@
         </table>
         {{$news->links()}}
     </main>
+    <script>
+        document.getElementById('news').setAttribute('class', 'nav-link active');
+    </script>
 @endsection

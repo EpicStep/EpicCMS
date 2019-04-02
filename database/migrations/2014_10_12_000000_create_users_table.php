@@ -43,6 +43,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('UnitPay_PublicKey');
             $table->string('UnitPay_SecretKey');
+            $table->integer('forum')->default('0');
             $table->timestamps();
         });
     }
@@ -56,5 +57,6 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('moderRequests');
+        Schema::dropIfExists('Settings');
     }
 }
