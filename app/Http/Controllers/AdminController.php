@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\donates;
+use Carbon\Carbon;
 use App\User;
 use App\Page;
 use App\Sections;
@@ -19,6 +21,8 @@ class AdminController extends Controller
     }
 
     public function index(){
+        $now = Carbon::today();
+
         $monday = User::all()->where('created_at');
         return view('admin.index');
     }
@@ -172,5 +176,41 @@ class AdminController extends Controller
             'forum' => $forum
         ));
         return redirect('admin/settings');
+    }
+
+    public function donates() {
+        $donates = donates::all();
+
+        $servers = Server::all();
+
+        return view('admin.donate.index', compact('donates', 'servers'));
+    }
+
+    public function donateDelete(){
+        $id = request('id');
+
+        $donate = donates::where('id', $id)->find($id);
+
+        $donate->delete();
+
+        return redirect('/admin/donate');
+    }
+
+    public function donateCreate() {
+        $name = request('name');
+        $cmd = request('cmd');
+        $tech_name = request('tech_name');
+        $price = request('price');
+        $server = request('server');
+
+        donates::create([
+            'name' => $name,
+            'cmd' => $cmd,
+            'tech_name' => $tech_name,
+            'price' => $price,
+            'server_id' => $server
+        ]);
+
+        return redirect('admin/donate');
     }
 }

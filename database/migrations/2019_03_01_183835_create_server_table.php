@@ -40,6 +40,7 @@ class CreateServerTable extends Migration
             $table->integer('server_id');
             $table->integer('price');
             $table->string('cmd');
+            $table->timestamps();
         });
 
         Schema::create('shop_items', function (Blueprint $table) {
@@ -48,6 +49,7 @@ class CreateServerTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->integer('price');
+            $table->timestamps();
         });
     }
 

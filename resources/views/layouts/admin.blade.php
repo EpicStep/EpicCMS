@@ -36,7 +36,7 @@
 </head>
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">EpicCMS</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{route('welcome')}}">EpicCMS</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="#logout" onclick="document.getElementById('logout-form').submit();"><i class="fas fa-door-open"></i> Выйти</a>
@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="donate" href="#">
+                        <a class="nav-link" id="donate" href="{{route('admin/donate')}}">
                             <i class="fas fa-donate"></i> Донат
                         </a>
                     </li>

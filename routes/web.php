@@ -14,11 +14,11 @@
 Route::get('/', 'NewsController@allNews')->name('welcome');
 
 Auth::routes();
-
+// LK
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/pay', 'HomeController@payPage')->name('home/pay');
-Route::post('/home/pay/request', 'HomeController@payRequest')->name('home/pay/request');
-Route::get('/home/pay/check', 'HomeController@payChecker')->name('home/pay/check');
+Route::post('/home/pay/request', 'PayController@payRequest')->name('home/pay/request');
+Route::get('/home/pay/check', 'PayController@payChecker')->name('home/pay/check');
 
 Route::get('/banlist', 'banlistController@banlist');
 Route::get('/news/{tech_name}', 'NewsController@show');
@@ -30,6 +30,10 @@ Route::get('/shop/{id}', 'ShopController@allNewsByServerId');
 
 Route::get('/page/{tech_name}', 'PageController@show');
 
+// LAUNCHER
+Route::get('/launcher/login', 'LauncherController@login');
+
+// ADMIN
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/servers', 'AdminController@servers')->name('admin/servers');
 Route::get('/admin/news', 'AdminController@news')->name('admin/news');
@@ -46,6 +50,10 @@ Route::post('/admin/page/create', 'AdminController@createPage')->name('admin/pag
 Route::post('/admin/page/edit', 'AdminController@pageEdit')->name('admin/page/edit');
 Route::get('/admin/settings', 'AdminController@settings')->name('admin/settings');
 Route::post('/admin/settings/update', 'AdminController@settingsUpdate')->name('admin/settings/update');
+Route::get('/admin/donate', 'AdminController@donates')->name('admin/donate');
+Route::post('/admin/donate/delete', 'AdminController@donateDelete')->name('admin/donate/delete');
+Route::post('/admin/donate/create', 'AdminController@donateCreate')->name('admin/donate/create');
+Route::get('/admin/donate/{tech_name}', 'AdminController@donateEditor')->name('admin/donate/editor');
 
 // FORUM
 Route::get('/forum', 'ForumController@forumIndex')->name('forum');
