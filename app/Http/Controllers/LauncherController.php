@@ -11,25 +11,24 @@ class LauncherController extends Controller
         $login = request('login');
         $password = request('password');
 
+        $error_msg = 'Username or password incorrect.';
+
         if (empty($login) || empty($password)){
-            exit('Введите логин или пороль');
+            return $error_msg;
         }
 
         $user = User::where('name', $login)->first();
 
-        $password = bcrypt($password);
-
         if (!isset($user)){
-            exit('Данного пользователя не существует.');
+            return $error_msg;
         }
 
-        $userpass = $user->password;
+        $currentPassword = $user->password;
 
-        dd($userpass, ' || ', $password);
-
-        if ($password == $userpass) {
-            $msg = '1';
-            return $msg;
+        if (!password_verify($password, $currentPassword)) {
+            return $error_msg;
         }
+
+        return('OK:'. $login);
     }
 }
