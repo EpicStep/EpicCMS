@@ -1,11 +1,13 @@
 package database
 
 import (
+	_ "github.com/lib/pq"
+	"go.uber.org/zap"
 	"xorm.io/xorm"
 )
 
 type DB struct {
-	engine *xorm.Engine
+	Engine *xorm.Engine
 }
 
 func NewDB(driver, dsn string) (*DB, error) {
@@ -14,15 +16,17 @@ func NewDB(driver, dsn string) (*DB, error) {
 		return nil, err
 	}
 
+	engine.SetLogger(NewXormZapLogger(zap.L()))
+
 	if err := engine.Ping(); err != nil {
 		return nil, err
 	}
 
 	return &DB{
-		engine: engine,
+		Engine: engine,
 	}, nil
 }
 
 func (db *DB) Close() error {
-	return db.engine.Close()
+	return db.Engine.Close()
 }
