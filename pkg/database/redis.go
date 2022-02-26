@@ -10,14 +10,15 @@ type RedisDB struct {
 	Redis *redis.Client
 }
 
-func NewRedis(addr string, password string) (*RedisDB, error) {
-	db := redis.NewClient(&redis.Options{
-		Addr:            	addr,
-		Password:           password,
-		DB:                 0,
-	})
+func NewRedis(url string) (*RedisDB, error) {
+	opts, err := redis.ParseURL(url)
+	if err != nil {
+		return nil, err
+	}
 
-	_, err := db.Ping(context.Background()).Result()
+	db := redis.NewClient(opts)
+
+	_, err = db.Ping(context.Background()).Result()
 
 	if err != nil {
 		return nil, fmt.Errorf("error connecting to redis: %w", err)
